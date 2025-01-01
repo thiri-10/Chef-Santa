@@ -3,6 +3,7 @@ import { useState } from "react";
 import Recipe from "./Recipe";
 import IngredientsList from "./IngredientsList";
 import {getRecipeFromMistral} from "../apitest/ai"
+import { setTimeout } from "timers";
 
 
 export default function Main() {
@@ -10,12 +11,12 @@ export default function Main() {
     // const ingredients = ['chickne','oregano','tomatoes'];
 
     const [ingre, setIngre] = useState<string[]>([]);
-    const [recipe, setRecipe] = useState(false);
+    const [recipe, setRecipe] = useState<string|undefined>('');
 
    
 
 
-    function addIngredient(formData: any) {
+    function addIngredient(formData: { get: (arg0: string) => any; }) {
         const newIngredient = formData.get('ingredient');
         console.log(newIngredient);
         setIngre(prevIngr => [...prevIngr, newIngredient]);
@@ -45,7 +46,9 @@ export default function Main() {
 
 
 
-            {recipe && <Recipe recipe={recipe} />}
+            {recipe ? <Recipe recipe={recipe} />: (recipe==undefined?
+                 <div>Loading...
+                 </div>: null)}
 
 
         </main>

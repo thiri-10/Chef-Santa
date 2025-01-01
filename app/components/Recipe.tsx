@@ -1,8 +1,12 @@
 // import ReactMarkdown form 'react-markdown';
 
+import { useEffect } from "react";
 import ReactMarkdown from "react-markdown";
 
-export default function Recipe({recipe}:{recipe: any}) {
+export default function Recipe({recipe}:{recipe: string}) {
+
+  
+
     return (
 
         <section className="suggested-recipe-container">
