@@ -3,7 +3,7 @@ import { useState } from "react";
 import Recipe from "./Recipe";
 import IngredientsList from "./IngredientsList";
 import {getRecipeFromMistral} from "../apitest/ai"
-import { setTimeout } from "timers";
+
 
 
 export default function Main() {
@@ -46,9 +46,7 @@ export default function Main() {
 
 
 
-            {recipe ? <Recipe recipe={recipe} />: (recipe==undefined?
-                 <div>Loading...
-                 </div>: null)}
+            {recipe && <Recipe recipe={recipe} />}
 
 
         </main>
